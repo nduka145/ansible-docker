@@ -1,13 +1,18 @@
 FROM docker.io/redhat/ubi8:8.10
 
+# Create local bin directory
 RUN mkdir -p /root/.local/bin
-ENV PATH "/root/.local/bin:$PATH"
 
+# Add local bin to PATH environment
+ENV PATH="/root/.local/bin:$PATH"
+
+# Install required packages and clean up to reduce image size
 RUN yum install -y \
-        git-2.43.5 \
-        python3.12-pip-23.2.1 \
+        git \
+        python3-pip \
     && yum clean all
 
+# Download hadolint and install ansible, ansible-lint, and yamllint
 RUN curl -o /root/.local/bin/hadolint https://github.com/hadolint/hadolint/releases/download/v2.12.0/hadolint-Linux-x86_64 \
     && chmod 0750 /root/.local/bin/hadolint \
     && python3 -m pip install --no-cache-dir --user \
