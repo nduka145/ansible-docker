@@ -13,13 +13,14 @@ pipeline {
 
         stage('Run Ansible Playbook') {
             steps {
-                ansiblePlaybook(
+              ansiblePlaybook(
                     credentialsId: 'ssh-user', 
                     inventory: 'inventory', 
                     playbook: 'myplaybook.yml', 
                     become: true, 
-                    becomeUser: 'root'
-                )
+                    becomeUser: 'root',
+                    executable: '/root/.local/bin/ansible-playbook'
+                   )
             }
         }
     }
