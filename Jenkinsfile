@@ -1,5 +1,8 @@
 pipeline {
     agent { dockerfile true }
+    tools{
+      ansible 'ansible'
+  }
 
     stages {
         stage('Check Git Installation') {
