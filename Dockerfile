@@ -12,7 +12,6 @@ RUN yum install -y \
 RUN curl -o /root/hadolint https://github.com/hadolint/hadolint/releases/download/v2.12.0/hadolint-Linux-x86_64 \
     && chmod 0750 /root/hadolint \
     && python3 -m pip install --no-cache-dir --user \
-        ansible==10.1.0 \
-        ansible-lint==24.6.1 \
-        yamllint==1.35.1 \
-    && ansible --version && ansible-lint --version && hadolint --version && yamllint --version
+        ansible \
+        ansible-lint \
+        yamllint
