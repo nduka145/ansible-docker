@@ -22,8 +22,7 @@ pipeline {
                     inventory: 'inventory', 
                     playbook: 'myplaybook.yml', 
                     become: true, 
-                    becomeUser: 'root',
-                    extraVars: [ 'ansible_user': 'root' ]  // Set the SSH user
+                    becomeUser: 'ansibleuser'
                 )
             }
         }
