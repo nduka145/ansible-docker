@@ -13,10 +13,15 @@ ENV ANSIBLE_LOCAL_TEMP=/tmp/.ansible/tmp
 RUN mkdir -p /tmp/.ansible/tmp
 
 # Ensure proper permissions are set for the /tmp directory and its subfolders
-RUN chmod 1777 /tmp && chmod -R 700 /tmp/.ansible
+RUN chmod -R 777 /tmp/.ansible
 
 # Set the working directory to /root
 WORKDIR /root
 
-# Run as root user
-USER root
+# Create a non-root user and switch to that user
+RUN useradd -m ansibleuser
+USER ansibleuser
+
+# Set environment variables for Ansible to work with the non-root user
+ENV HOME=/home/ansibleuser
+ENV ANSIBLE_CONFIG=$HOME/.ansible.cfg
