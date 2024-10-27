@@ -1,8 +1,8 @@
 pipeline {
     agent { dockerfile true }
-    tools{
-      ansible 'ansible'
-  }
+    tools {
+        ansible 'ansible'
+    }
 
     stages {
         stage('Check Git Installation') {
@@ -13,14 +13,14 @@ pipeline {
 
         stage('Run Ansible Playbook') {
             steps {
-              ansiblePlaybook(
+                ansiblePlaybook(
                     credentialsId: 'ssh-user', 
                     inventory: 'inventory', 
                     playbook: 'myplaybook.yml', 
                     become: true, 
                     becomeUser: 'root',
-                    executable: '/root/.local/bin/ansible-playbook'
-                   )
+                    executable: '/root/.local/bin/ansible-playbook' // Full path to ansible-playbook
+                )
             }
         }
     }
