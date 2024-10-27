@@ -1,10 +1,6 @@
 pipeline {
     agent { dockerfile true }
 
-    tools {
-        git 'git'  
-    }
-
     stages {
         stage('Check Git Installation') {
             steps {
