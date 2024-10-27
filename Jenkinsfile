@@ -23,6 +23,7 @@ pipeline {
                     playbook: 'myplaybook.yml', 
                     become: true, 
                     becomeUser: 'root'
+                    remote_user: root
                 )
             }
         }
