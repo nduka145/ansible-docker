@@ -1,6 +1,7 @@
 ---
 - name: Setup environment with required packages and files
   hosts: all
+  remote_user: root
   become: yes
 
   tasks:
