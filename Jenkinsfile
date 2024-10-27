@@ -17,14 +17,7 @@ pipeline {
 
         stage('Run Ansible Playbook') {
             steps {
-                ansiblePlaybook(
-                    credentialsId: 'ssh-user', 
-                    inventory: 'inventory', 
-                    playbook: 'myplaybook.yml', 
-                    become: true, 
-                    becomeUser: 'root'
-                    remote_user: root
-                )
+                sh 'ansible-playbook myplaybook.yml -i inventory'
             }
         }
     }
