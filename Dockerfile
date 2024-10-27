@@ -4,7 +4,7 @@ RUN mkdir -p /root/.local/bin
 ENV PATH "/root/.local/bin:$PATH"
 
 RUN yum install -y \
-        git-2.43.5 \
+        git \
         python3.12-pip-23.2.1 \
     && yum clean all
 
