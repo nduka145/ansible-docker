@@ -14,4 +14,5 @@ RUN curl -o /root/.local/bin/hadolint https://github.com/hadolint/hadolint/relea
         ansible==10.1.0 \
         ansible-lint==24.6.1 \
         yamllint==1.35.1 \
+    && chmod -R 0750 /root/.local/bin \
     && ansible --version && ansible-lint --version && hadolint --version && yamllint --version
