@@ -4,6 +4,10 @@ pipeline {
         ansible 'ansible'
     }
 
+    environment {
+        PATH = "/root/.local/bin:$PATH" // Ensure ansible-playbook is in PATH
+    }
+
     stages {
         stage('Check Git Installation') {
             steps {
@@ -18,8 +22,7 @@ pipeline {
                     inventory: 'inventory', 
                     playbook: 'myplaybook.yml', 
                     become: true, 
-                    becomeUser: 'root',
-                    executable: '/root/.local/bin/ansible-playbook' // Full path to ansible-playbook
+                    becomeUser: 'root'
                 )
             }
         }
