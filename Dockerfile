@@ -7,13 +7,13 @@ RUN yum install -y git wget python3 && \
     pip3 install ansible
 
 # Set environment variable to change Ansible's temporary directory
-ENV ANSIBLE_LOCAL_TEMP=/root/.ansible/tmp
+ENV ANSIBLE_LOCAL_TEMP=/tmp/.ansible/tmp
 
-# Create the new temporary directory for Ansible
-RUN mkdir -p /root/.ansible/tmp
+# Create the new temporary directory for Ansible under /tmp
+RUN mkdir -p /tmp/.ansible/tmp
 
-# Ensure proper permissions are set for the /tmp directory
-RUN chmod 1777 /tmp
+# Ensure proper permissions are set for the /tmp directory and its subfolders
+RUN chmod 1777 /tmp && chmod -R 700 /tmp/.ansible
 
 # Set the working directory to /root
 WORKDIR /root
