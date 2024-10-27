@@ -2,6 +2,12 @@ pipeline {
     agent { dockerfile true }
 
     stages {
+        stage('Check Git Installation') {
+            steps {
+                sh 'git --version'
+            }
+        }
+
         stage('Clone Ansible Playbook') {
             steps {
                 git branch: 'master', url: 'https://github.com/nduka145/ansible-docker.git'
@@ -12,7 +18,6 @@ pipeline {
             steps {
                 ansiblePlaybook(
                     credentialsId: 'ssh-user', 
-                    installation: 'ansible', 
                     inventory: 'inventory', 
                     playbook: 'freestyle.yaml', 
                     become: true, 
