@@ -10,7 +10,7 @@ pipeline {
 
         stage('Clone Ansible Playbook') {
             steps {
-                git branch: 'master', url: 'https://github.com/nduka145/ansible-docker.git'
+                git 'https://github.com/nduka145/ansible-docker.git'
             }
         }
 
