@@ -1,0 +1,30 @@
+---
+- name: Setup environment with required packages and files
+  hosts: all
+  become: yes
+
+  tasks:
+    - name: Install required packages
+      yum:
+        name:
+          - wget
+          - zip
+          - unzip
+        state: present
+
+    - name: Create /obi directory
+      file:
+        path: /obi
+        state: directory
+        mode: '0755'
+
+    - name: Create /obi/test-automation.txt file
+      file:
+        path: /obi/test-automation.txt
+        state: touch
+        mode: '0644'
+
+    - name: Download epel-next-release RPM
+      get_url:
+        url: https://rpmfind.net/linux/epel/9/Everything/ppc64le/Packages/e/epel-next-release-9-8.el9.noarch.rpm
+        dest: /obi/epel-next-release-9-8.el9.noarch.rpm
