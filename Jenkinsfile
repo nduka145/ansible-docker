@@ -8,12 +8,6 @@ pipeline {
             }
         }
 
-        stage('Clone Ansible Playbook') {
-            steps {
-                git 'https://github.com/nduka145/ansible-docker.git'
-            }
-        }
-
         stage('Run Ansible Playbook') {
             steps {
                 ansiblePlaybook(
