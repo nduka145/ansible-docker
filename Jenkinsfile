@@ -5,7 +5,7 @@ pipeline {
     }
 
     environment {
-        PATH = "/home/ansibleuser/.local/bin:$PATH" // Updated to match non-root user
+        PATH = "/tmp/.local/bin:$PATH" // Updated to match /tmp directory
     }
 
     stages {
@@ -22,8 +22,7 @@ pipeline {
                     inventory: 'inventory', 
                     playbook: 'myplaybook.yml', 
                     become: true, 
-                    becomeUser: 'root', // This may still work if ansibleuser has sudo permissions
-                    sudoUser: 'ansibleuser'
+                    becomeUser: 'root'
                 )
             }
         }
