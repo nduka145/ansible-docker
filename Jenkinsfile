@@ -13,7 +13,7 @@ pipeline {
                 ansiblePlaybook(
                     credentialsId: 'ssh-user', 
                     inventory: 'inventory', 
-                    playbook: 'freestyle.yaml', 
+                    playbook: 'myplaybook.yml', 
                     become: true, 
                     becomeUser: 'root'
                 )
