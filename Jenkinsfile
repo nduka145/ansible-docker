@@ -11,7 +11,7 @@ pipeline {
     stages {
         stage('Check Git Installation') {
             steps {
-                sh 'git --version'
+                sh 'whoami'
             }
         }
 
