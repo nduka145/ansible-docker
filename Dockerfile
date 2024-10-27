@@ -1,7 +1,7 @@
 FROM docker.io/redhat/ubi8:8.10
 
-RUN mkdir -p /root/.local/bin
-ENV PATH "/root/.local/bin:$PATH"
+RUN mkdir -p /root
+ENV PATH "/root:$PATH"
 
 RUN yum install -y \
         git \
